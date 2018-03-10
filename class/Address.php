@@ -11,7 +11,11 @@ class Address implements Action
 
     public function __construct()
     {
-
+        $this->id = -1;
+        $this->city = '';
+        $this->postcode = '';
+        $this->street = '';
+        $this->homeNumber = '';
     }
 
     public function save()
