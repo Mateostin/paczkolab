@@ -7,8 +7,8 @@ $response = [];
 //connect to DB
 try {
     $conn = new PDO(
-        "mysql:host=".DB_HOST.";dbname=".DB_DB.";charset=utf8"
-        , DB_LOGIN, DB_PASSWORD,
+        "mysql:host=".DB_SERVER_NAME.";dbname=".DB_BASE_NAME.";charset=utf8"
+        , DB_USERNAME, DB_PASSWORD,
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 } catch (PDOException $e) {
