@@ -6,9 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     foreach ($sizes as $k => $size) {
         $tmpSizes[$k]['id'] = $size['id'];
         $tmpSizes[$k]['size'] = $size['size'];
+        $tmpSizes[$k]['price'] = $size['price'];
     }
 
-    $response = ['success' => $tmpSizes];
+    $response = $tmpSizes;
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $author = new Author($conn);
     $author->setName($_POST['name']);
