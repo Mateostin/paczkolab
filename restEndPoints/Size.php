@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     Size::setDb($db);
-    $sizes = Size::loadAll(isset($pathId) ? $pathId : null);
+    $sizes = Size::loadAll();
     $tmpSizes = [];
     foreach ($sizes as $k => $size) {
         $tmpSizes[$k]['id'] = $size['id'];

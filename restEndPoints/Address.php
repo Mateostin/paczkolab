@@ -2,7 +2,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     Address::setDb($db);
-    $addresses =Address::loadAll();
+    $addresses = Address::loadAll();
     $tmpAddresses = [];
     foreach ($addresses as $k => $address) {
         $tmpAddresses[$k]['id'] = $address['id'];

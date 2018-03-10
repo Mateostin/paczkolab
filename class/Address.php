@@ -41,7 +41,7 @@ class Address implements Action
     public static function loadAll()
     {
         self::$db->query("SELECT * FROM Address");
-        return self::$db->result;
+        return self::$db->resultSet();
     }
 
     public static function setDb(Database $db)
