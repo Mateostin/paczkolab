@@ -15,7 +15,7 @@ try {
     $response = ['error' => 'DB Connection error: '.$e->getMessage()];
 }
 
-//to get name of class (book) and optional id from db (1)
+//to get name of class  and optional id from db (1)
 $uriPathInfo = $_SERVER['PATH_INFO'];
 //explode path info
 $path = explode('/', $uriPathInfo);
