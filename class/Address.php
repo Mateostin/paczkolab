@@ -8,6 +8,7 @@ class Address implements Action
     private $street;
     private $homeNumber;
 
+
     public function __construct()
     {
         
