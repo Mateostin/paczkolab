@@ -12,6 +12,5 @@ class Address implements Action
     public function __construct()
     {
 
-
     }
 }
