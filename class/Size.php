@@ -34,27 +34,35 @@ class Size implements Action
         return $this;
     }
 
-    public function loadFromDB($id)
+    public function save()
     {
-        //TODO:
-    }
-    public function saveToDB()
-    {
-        //TODO:
+        // TODO: Implement save() method.
     }
 
     public function update()
     {
-        //TODO:
+        // TODO: Implement update() method.
     }
 
-    public function deleteFromDB()
+    public function delete()
     {
-        //TODO:
+        // TODO: Implement delete() method.
     }
 
-    public static function loadAllFromDB() {
-        //TODO:
+    public static function load($id = null)
+    {
+        // TODO: Implement load() method.
     }
+
+    public static function loadAll()
+    {
+        // TODO: Implement loadAll() method.
+    }
+
+    public static function setDb(Database $db)
+    {
+        // TODO: Implement setDb() method.
+    }
+
 
 }
