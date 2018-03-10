@@ -5,15 +5,8 @@ require (__DIR__ . '/config.php');
 
 $response = [];
 //connect to DB
-try {
-    $conn = new PDO(
-        "mysql:host=".DB_SERVER_NAME.";dbname=".DB_BASE_NAME.";charset=utf8"
-        , DB_USERNAME, DB_PASSWORD,
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-} catch (PDOException $e) {
-    $response = ['error' => 'DB Connection error: '.$e->getMessage()];
-}
+
+$db = new DBmysql();
 
 //to get name of class  and optional id from db (1)
 $uriPathInfo = $_SERVER['PATH_INFO'];
@@ -33,7 +26,7 @@ require_once $classFile;
 $pathId = isset($path[2]) ? $path[2] : null;
 
 if (!isset($response['error'])) {//process request if no db error
-    include_once __DIR__.'/restEndpoints/'.$className.'.php';
+    include_once __DIR__.'/restEndPoints/'.$className.'.php';
 }
 
 header('Content-Type: application/json');//return json header

@@ -5,6 +5,10 @@ class Size implements Action
     private $id;
     private $size;
     private $price;
+    /**
+     * @var Database
+     */
+    public static $db;
 
     public function __construct($size, $price) {
         $this->size = $size;
@@ -56,12 +60,13 @@ class Size implements Action
 
     public static function loadAll()
     {
-        // TODO: Implement loadAll() method.
+        self::$db->query("SELECT * FROM Size");
+        return self::$db->resultSet();
     }
 
     public static function setDb(Database $db)
     {
-        // TODO: Implement setDb() method.
+        self::$db = $db;
     }
 
 
