@@ -6,9 +6,9 @@ interface Action
 
     public function save();
 
-    public function update();
+    public function update($id);
 
-    public function delete();
+    public static function delete($id);
 
     public static function load($id = null);
     

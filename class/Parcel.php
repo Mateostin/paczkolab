@@ -12,11 +12,11 @@ class Parcel implements Action
 
     }
 
-    public function update()
+    public function update($id = null)
     {
     }
 
-    public function delete()
+    public static function delete($id = null)
     {
     }
 
