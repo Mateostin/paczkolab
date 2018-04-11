@@ -26,17 +26,17 @@ $(document).ready(function() {
             var tr = $('<tr>'),
                 tdId = $('<td>', {class: "id"}),
                 tdCity = $('<td>', {class: "city"}),
-                tdCode = $('<td>', {class: "code"}),
+                tdCode = $('<td>', {class: "postcode"}),
                 tdStreet = $('<td>', {class: "street"}),
-                tdFlat = $('<td>', {class: "flat"}),
+                tdFlat = $('<td>', {class: "house"}),
                 tdAction = $('<td>', {class: "action"}),
                 actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
                 actionEdit = $('<button>', {class: "edit-btn"}).text('Edytuj'),
                 actionForm = $('<form>', {class: "edit-form hide"}),
                 inputCity = $('<input>', {name: "city", id: "city"}),
-                inputCode = $('<input>', {name: "code", id: "code"}),
+                inputCode = $('<input>', {name: "postcode", id: "postcode"}),
                 inputStreet = $('<input>', {name: "street", id: "street"}),
-                inputFlat = $('<input>', {name: "flat", id: "flat"}),
+                inputFlat = $('<input>', {name: "house", id: "house"}),
                 inputSubmit = $('<input>', {type: "submit"});
 
             // Create table element
@@ -48,9 +48,9 @@ $(document).ready(function() {
             viewAddress.append(tr);
             tdId.text(this.id);
             tdCity.text(this.city);
-            tdCode.text(this.code);
+            tdCode.text(this.postcode);
             tdStreet.text(this.street);
-            tdFlat.text(this.flat);
+            tdFlat.text(this.house);
         });
 
         // ACTION - Edit ADDRESS data
@@ -64,23 +64,23 @@ $(document).ready(function() {
             var parent = $(this).parent().parent();
             var id = parent.find('td[class=id]').text();
             var cityValue = parent.find('td[class=city]').text();
-            var codeValue = parent.find('td[class=code]').text();
+            var codeValue = parent.find('td[class=postcode]').text();
             var streetValue = parent.find('td[class=street]').text();
-            var flatValue = parent.find('td[class=flat]').text();
+            var flatValue = parent.find('td[class=house]').text();
             
             editForm.children('input[name=city]').val(cityValue);
-            editForm.children('input[name=code]').val(codeValue);
+            editForm.children('input[name=postcode]').val(codeValue);
             editForm.children('input[name=street]').val(streetValue);
-            editForm.children('input[name=flat]').val(flatValue);
+            editForm.children('input[name=house]').val(flatValue);
 
             
             edit.on('click', function(e){
                 e.preventDefault();
 
                 var city = $(this).siblings('#city').val();
-                var code = $(this).siblings('#code').val();
+                var code = $(this).siblings('#postcode').val();
                 var street = $(this).siblings('#street').val();
-                var flat = $(this).siblings('#flat').val();
+                var flat = $(this).siblings('#house').val();
 
                 $.ajax({
                     type: "PATCH",

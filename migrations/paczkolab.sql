@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 10 Mar 2018, 15:03
--- Wersja serwera: 5.7.21-0ubuntu0.16.04.1
--- Wersja PHP: 7.0.22-0ubuntu0.16.04.1
+-- Generation Time: Apr 11, 2018 at 08:15 PM
+-- Server version: 5.7.21-0ubuntu0.16.04.1
+-- PHP Version: 5.6.32-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,27 +17,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `paczkolab`
+-- Database: `paczkolab`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `Address`
+-- Table structure for table `Address`
 --
 
 CREATE TABLE `Address` (
   `id` int(11) NOT NULL,
   `city` varchar(200) COLLATE utf8_polish_ci NOT NULL,
-  `postcode` decimal(10,2) NOT NULL,
+  `postcode` decimal(10,0) NOT NULL,
   `street` varchar(200) COLLATE utf8_polish_ci NOT NULL,
-  `house` decimal(10,2) NOT NULL
+  `house` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `Address`
+--
+
+INSERT INTO `Address` (`id`, `city`, `postcode`, `street`, `house`) VALUES
+(2, 'Wrocław', '123123', 'Grabiszynska', '123');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `Parcel`
+-- Table structure for table `Parcel`
 --
 
 CREATE TABLE `Parcel` (
@@ -50,7 +57,7 @@ CREATE TABLE `Parcel` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `Size`
+-- Table structure for table `Size`
 --
 
 CREATE TABLE `Size` (
@@ -59,10 +66,17 @@ CREATE TABLE `Size` (
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Dumping data for table `Size`
+--
+
+INSERT INTO `Size` (`id`, `size`, `price`) VALUES
+(1, 'L', '12.50');
+
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `Users`
+-- Table structure for table `Users`
 --
 
 CREATE TABLE `Users` (
@@ -74,7 +88,7 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
@@ -110,42 +124,42 @@ ALTER TABLE `Users`
 --
 
 --
--- AUTO_INCREMENT dla tabeli `Address`
+-- AUTO_INCREMENT for table `Address`
 --
 ALTER TABLE `Address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT dla tabeli `Parcel`
+-- AUTO_INCREMENT for table `Parcel`
 --
 ALTER TABLE `Parcel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT dla tabeli `Size`
+-- AUTO_INCREMENT for table `Size`
 --
 ALTER TABLE `Size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT dla tabeli `Users`
+-- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Ograniczenia dla zrzutów tabel
+-- Constraints for dumped tables
 --
 
 --
--- Ograniczenia dla tabeli `Parcel`
+-- Constraints for table `Parcel`
 --
 ALTER TABLE `Parcel`
-  ADD CONSTRAINT `Parcel_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `Users` (`id`),
-  ADD CONSTRAINT `Parcel_ibfk_2` FOREIGN KEY (`size`) REFERENCES `Size` (`id`),
-  ADD CONSTRAINT `Parcel_ibfk_3` FOREIGN KEY (`address`) REFERENCES `Address` (`id`);
+  ADD CONSTRAINT `Parcel_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `Users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `Parcel_ibfk_2` FOREIGN KEY (`size`) REFERENCES `Size` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `Parcel_ibfk_3` FOREIGN KEY (`address`) REFERENCES `Address` (`id`) ON DELETE CASCADE;
 
 --
--- Ograniczenia dla tabeli `Users`
+-- Constraints for table `Users`
 --
 ALTER TABLE `Users`
-  ADD CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`address`) REFERENCES `Address` (`id`);
+  ADD CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`address`) REFERENCES `Address` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

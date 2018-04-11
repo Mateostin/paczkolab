@@ -8,34 +8,44 @@ class Address implements Action
     private $street;
     private $house;
 
+    /**
+     * @var Database
+     */
     public static $db;
 
     public function __construct($city,$postcode,$street,$house)
     {
-        $this->city = '';
-        $this->postcode = '';
-        $this->street = '';
-        $this->house = '';
+        $this->city = $city;
+        $this->postcode = $postcode;
+        $this->street = $street;
+        $this->house = $house;
     }
-    /**
-     * @var Database
-     */
 
     public function save()
     {
-
+        self::$db->query("INSERT INTO Address(id, city, postcode, street, house) VALUES (null, '".$this->getCity()."', '".$this->getPostcode()."', '".$this->getStreet()."', '".$this->getHouse()."')");
+        return self::$db->execute();
     }
 
     public function update($id = null)
     {
+        self::$db->query("UPDATE Address SET city = '".$this->getCity()."', postcode = '".$this->getPostcode()."', street = '".$this->getStreet()."', house = '".$this->getHouse()."' WHERE id = :id");
+        self::$db->bind('id', $id, null);
+        return self::$db->execute();
     }
 
     public static function delete($id = null)
     {
+        self::$db->query("DELETE FROM Address WHERE id = :id");
+        self::$db->bind('id', $id, null);
+        return self::$db->execute();
     }
 
     public static function load($id = null)
     {
+        self::$db->query("SELECT * FROM Address WHERE id = :id");
+        self::$db->bind('id', $id, null);
+        return self::$db->single();
     }
 
     public static function loadAll()
@@ -49,14 +59,10 @@ class Address implements Action
         self::$db=$db;
     }
 
-
     public function getId()
     {
         return $this->id;
     }
-
-
-
 
     public function getCity()
     {
@@ -68,36 +74,30 @@ class Address implements Action
         $this->city = $city;
     }
 
-
     public function getPostcode()
     {
         return $this->postcode;
     }
-
 
     public function setPostcode($postcode)
     {
         $this->postcode = $postcode;
     }
 
-
     public function getStreet()
     {
         return $this->street;
     }
-
 
     public function setStreet($street)
     {
         $this->street = $street;
     }
 
-
     public function getHouse()
     {
-        return $this->house;
+        return intval($this->house);
     }
-
 
     public function setHomeNumber($house)
     {
