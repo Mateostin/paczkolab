@@ -4,7 +4,7 @@ class User implements Action
 {
 
     /**
-     * @var DBmysql
+     * @var Database
      */
     public static $db;
     private $id;
@@ -13,6 +13,13 @@ class User implements Action
     private $creditQuantity;
     private $address;
 
+    public function __construct($name, $surname, $creditQuantity, $address)
+    {
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->creditQuantity = $creditQuantity;
+        $this->address = $address;
+    }
 
     /**
      * @return mixed

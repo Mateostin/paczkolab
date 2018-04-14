@@ -11,7 +11,7 @@ $(document).ready(function() {
             var option = $('<option>');
                 
             optionAddress.append(option);
-            option.text(this.city + ' ' + this.code + ', ' + this.street + ' ' + this.flat);
+            option.text(this.city + ' ' + this.postcode + ', ' + this.street + ' ' + this.house);
             option.attr('data-id', this.id);
         })
     }
