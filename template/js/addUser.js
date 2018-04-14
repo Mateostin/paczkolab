@@ -12,7 +12,7 @@ $(document).ready(function() {
                 
             optionAddress.append(option);
             option.text(this.city + ' ' + this.postcode + ', ' + this.street + ' ' + this.house);
-            option.attr('data-id', this.id);
+            option.attr('value', this.id);
         })
     }
 
@@ -37,7 +37,7 @@ $(document).ready(function() {
     $('#add-user input[type=submit]').on('click', function(event) {
         event.preventDefault();
             var user = $('#add-user');
-            var address = user.find('#address_option option:selected').attr('data-id'),
+            var address = user.find('#address_option option:selected').val(),
             name = user.find(' #name').val(),
             surname = user.find('#surname').val(),
             credits = user.find('#credits').val();

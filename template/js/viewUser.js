@@ -51,11 +51,12 @@ $(document).ready(function() {
 
             function insertAddress(address) {
                 $.each(address, function() {
-                    addressName.text(this.city + ' ' + this.code + ' ' +  this.street + ' ' + this.flat);
+                    addressName.text(this.city + ' ' + this.postcode + ' ' +  this.street + ' ' + this.house);
+                    addressName.attr('data-id', this.id)
                 });
             }
 
-            var id = this.address_id;
+            var id = this.address;
             var url = '../../router.php/address/';
 
             // Show address from database ADDRESS in table
@@ -74,7 +75,7 @@ $(document).ready(function() {
             tdId.text(this.id);
             tdName.text(this.name);
             tdSurname.text(this.surname);
-            tdCredits.text(this.credits);
+            tdCredits.text(this.creditQuantity);
         });
 
         // Edit USER data
@@ -95,8 +96,8 @@ $(document).ready(function() {
             
             edit.on('click', function(e){
                 e.preventDefault();
-                                
-                var addressid = this.address_id;
+
+                var addressid = $('td[class=address]').children().attr('data-id');
                 var name = $(this).siblings('#name').val();
                 var surname = $(this).siblings('#surname').val();
                 var credits = $(this).siblings('#credits').val();
