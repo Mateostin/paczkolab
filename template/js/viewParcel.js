@@ -32,6 +32,7 @@ $(document).ready(function() {
                 tdPrice = $('<td>', {class: "price"}),
                 tdAction = $('<td>', {class: "action"}),
                 actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
+                actionEdit = $('<button>', {class: "edit-btn"}).text('Edytuj'),
                 actionForm = $('<form>', {class: "edit-form hide"}),
                 inputAddress = $('<input>', {name: "address", id: "address"}),
                 inputName = $('<input>', {name: "name", id: "name"}),
@@ -41,18 +42,18 @@ $(document).ready(function() {
 
             // Create table element
             tr.append(tdId, tdAddress, tdName, tdSize, tdPrice, tdAction);
-            tdAction.append(actionDelete, actionForm);
+            tdAction.append(actionDelete, actionEdit, actionForm);
             actionForm.append(inputAddress, inputName, inputSize, inputPrice, inputSubmit);
             viewParcel.append(tr);
 
             // Insert proper address
             function insertAddress(address) {
                 $.each(address, function() {
-                    tdAddress.text(this.city + ' ' + this.code + ', ' +  this.street + ' ' + this.flat);
+                    tdAddress.text(this.city + ' ' + this.postcode + ', ' +  this.street + ' ' + this.house);
                 });    
             }
 
-            var addressId = this.address_id;
+            var addressId = this.address;
             var url = '../../router.php/address/';
 
             // Show data from database ADDRESS in table
@@ -74,7 +75,7 @@ $(document).ready(function() {
                 });
             }
 
-            var userId = this.user_id;
+            var userId = this.sender;
             var url = '../../router.php/user/';
 
             // Show data from database USER in table
@@ -97,7 +98,7 @@ $(document).ready(function() {
                 })
             }
 
-            var sizeId = this.size_id;
+            var sizeId = this.size;
             var url = '../../router.php/size/';
 
             // Show data from database SIZE in table

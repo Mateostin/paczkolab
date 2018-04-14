@@ -28,7 +28,7 @@ $(document).ready(function() {
                 tdSize = $('<td>', {class: "size"}),
                 tdPrice = $('<td>', {class: "price"}),
                 tdAction = $('<td>', {class: "action"}),
-                    actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
+                actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
                 actionEdit = $('<button>', {class: "edit-btn"}).text('Edytuj'),
                 actionForm = $('<form>', {class: "edit-form hide"}),
                 inputSize = $('<input>', {name: "size", id: "size"}),
