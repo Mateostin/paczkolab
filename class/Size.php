@@ -1,5 +1,7 @@
 <?php
 
+include_once __DIR__.'/interface/Action.php';
+
 class Size implements Action
 {
     private $size;

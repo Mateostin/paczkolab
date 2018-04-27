@@ -32,7 +32,6 @@ $(document).ready(function() {
                 tdPrice = $('<td>', {class: "price"}),
                 tdAction = $('<td>', {class: "action"}),
                 actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
-                actionEdit = $('<button>', {class: "edit-btn"}).text('Edytuj'),
                 actionForm = $('<form>', {class: "edit-form hide"}),
                 inputAddress = $('<input>', {name: "address", id: "address"}),
                 inputName = $('<input>', {name: "name", id: "name"}),
@@ -42,7 +41,7 @@ $(document).ready(function() {
 
             // Create table element
             tr.append(tdId, tdAddress, tdName, tdSize, tdPrice, tdAction);
-            tdAction.append(actionDelete, actionEdit, actionForm);
+            tdAction.append(actionDelete, actionForm);
             actionForm.append(inputAddress, inputName, inputSize, inputPrice, inputSubmit);
             viewParcel.append(tr);
 
