@@ -2,4 +2,12 @@
 <dataset>
     <Size id="1" size="M" price="8"/>
     <Size id="2" size="L" price="10"/>
+    <Address id="1" city="Sw.Katarzyna" postcode="55010" street="Zernicka" house="8"/>
+    <Address id="2" city="Wrocław" postcode="53429" street="Żelazna" house="1"/>
+    <Address id="3" city="Katowice" postcode="00020" street="Ceglana" house="8"/>
+    <Users id="1" name="Iron" surname="Man" address="1"/>
+    <Users id="2" name="Spider" surname="Man" address="2"/>
+    <Users id="3" name="Super" surname="Man" address="3"/>
+    <Parcel id="1" sender="1" size="1" address="1"/>
+    <Parcel id="2" sender="2" size="2" address="2"/>
 </dataset>
